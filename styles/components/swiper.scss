@@ -1,0 +1,51 @@
+.mySwiperSlide {
+  padding: 10px !important;
+  height: 40vh;
+}
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(grey, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  &:hover {
+    cursor: pointer;
+    .title {
+      transform: translateY(-50%) scale(1.2);
+    }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .title {
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+    text-align: center;
+    transition: 0.3s;
+    h2 {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.3);
+      padding: 5px 10px;
+      border-radius: 8px;
+      backdrop-filter: blur(2px);
+      color: white;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+span.swiper-pagination-bullet {
+  background-color: white;
+}
+span.swiper-pagination-bullet-active {
+  background-color: palevioletred;
+}
