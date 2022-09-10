@@ -37,7 +37,7 @@
       padding: 5px 10px;
       border-radius: 8px;
       backdrop-filter: blur(2px);
-      color: white;
+      color: orangered;
       text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     }
   }
@@ -47,5 +47,5 @@ span.swiper-pagination-bullet {
   background-color: white;
 }
 span.swiper-pagination-bullet-active {
-  background-color: palevioletred;
+  background-color: orangered;
 }

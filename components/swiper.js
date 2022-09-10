@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/bundle";
-import "swiper/css/pagination";
 
 function SwiperComponent() {
   const musics = [
@@ -39,11 +38,18 @@ function SwiperComponent() {
       img: "http://placeimg.com/640/640/nature/grayscale/any",
     },
   ];
-  const [sound, setSound] = useState(musics[0].src);
 
-  const handleClick = (e) => {
-    const index = Number(e.currentTarget.dataset.id);
-    setSound(musics[index - 1].src);
+  const [sound, setSound] = useState();
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const audioPlayer = useRef();
+
+  const handleClick = async (e) => {
+    if (isPlaying) {
+      const index = Number(e.currentTarget.dataset.id);
+      await setSound(musics[index - 1].src);
+      audioPlayer.current.play();
+    }
   };
 
   return (
@@ -78,7 +84,12 @@ function SwiperComponent() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <audio controls src={`/assets/music/${sound}`}></audio>
+      <audio
+        ref={audioPlayer}
+        preload="metadata"
+        controls
+        src={`/assets/music/${sound}`}
+      ></audio>
     </>
   );
 }
