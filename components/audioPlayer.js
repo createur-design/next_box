@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
 function AudioPlayer(sound) {
-  const AudioPlayer = React.createRef();
+  const useAudioPlayer = useRef();
   useEffect(() => {
     if (sound.title !== undefined) {
       LaunchMusic();
@@ -9,12 +9,12 @@ function AudioPlayer(sound) {
   }, [sound]);
   console.log("title of sound:", sound.title);
   const LaunchMusic = () => {
-    AudioPlayer.current.play();
+    useAudioPlayer.current.play();
   };
   return (
     <div className="grid-container">
       <audio
-        ref={AudioPlayer}
+        ref={useAudioPlayer}
         preload="metadata"
         controls
         src={`/assets/music/${sound.title}`}
