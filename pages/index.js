@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import SwiperComponent from "../components/Swiper";
+import SwiperComponent from "./../components/Swiper";
 
 export default function Home() {
   const user = {
