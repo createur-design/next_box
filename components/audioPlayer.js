@@ -1,13 +1,12 @@
 import React, { useRef, useEffect } from "react";
 
-function AudioPlayer(sound) {
+function AudioPlayer(music) {
   const useAudioPlayer = useRef();
   useEffect(() => {
-    if (sound.title !== undefined) {
+    if (music.title !== undefined) {
       LaunchMusic();
     }
-  }, [sound]);
-  console.log("title of sound:", sound.title);
+  }, [music]);
   const LaunchMusic = () => {
     useAudioPlayer.current.play();
   };
@@ -17,10 +16,10 @@ function AudioPlayer(sound) {
         ref={useAudioPlayer}
         preload="metadata"
         controls
-        src={`/assets/music/${sound.title}`}
+        src={music.title ? `/assets/music/${music.title}` : ""}
       ></audio>
       <p className="text-right">
-        <b>{sound.title}</b>
+        <b>{music.title}</b>
       </p>
     </div>
   );

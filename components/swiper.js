@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
@@ -6,47 +6,21 @@ import "swiper/css/bundle";
 import AudioPlayer from "./AudioPlayer";
 
 function SwiperComponent() {
-  const musics = [
-    {
-      id: 1,
-      title: "Stranger Things",
-      src: "eleven_Stranger_Things.mp3",
-      img: "http://placeimg.com/640/640/any",
-    },
-    {
-      id: 2,
-      title: "Welcome to my house",
-      src: "Ason_ID-Welcome_to_my_house.mp3",
-      img: "http://placeimg.com/640/640/people/any",
-    },
-    {
-      id: 3,
-      title: "Meizong Dawn of light",
-      src: "Meizong-Dawn_of_Light.mp3",
-      img: "http://placeimg.com/800/800/any",
-    },
-    {
-      id: 4,
-      title: "RnbStylerz What",
-      src: "Rnbstylerz_AREES-What(Edit).mp3",
-      img: "http://placeimg.com/640/640/tech/any",
-    },
-    {
-      id: 5,
-      title: "Slinz other side",
-      src: "Slinz-Other_Side.mp3",
-      img: "http://placeimg.com/640/640/nature/grayscale/any",
-    },
-  ];
+  const [allMusics, setAllMusics] = useState([]);
+  const [music, setMusic] = useState();
 
-  const [soundTitle, setSoundTitle] = useState();
-  const [isPlaying, setIsPlaying] = useState(true);
+  const fetchMusics = async () => {
+    const res = await fetch("api/musics");
+    const musics = await res.json();
+    setAllMusics(musics);
+  };
+  useEffect(() => {
+    fetchMusics();
+  });
 
   const handleClick = async (e) => {
-    if (isPlaying) {
-      const index = Number(e.currentTarget.dataset.id);
-      await setSoundTitle(musics[index - 1].src);
-    }
+    const index = Number(e.currentTarget.dataset.id);
+    await setMusic(allMusics[index - 1].src);
   };
 
   return (
@@ -63,7 +37,7 @@ function SwiperComponent() {
             modules={[Autoplay, Pagination]}
             className="mySwiperSlide"
           >
-            {musics.map((music) => (
+            {allMusics.map((music) => (
               <SwiperSlide
                 data-id={music.id}
                 key={music.id}
@@ -83,7 +57,7 @@ function SwiperComponent() {
           </Swiper>
         </div>
       </div>
-      <AudioPlayer title={soundTitle} />
+      <AudioPlayer title={music} />
     </>
   );
 }
