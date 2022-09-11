@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
 import "swiper/css/bundle";
-import AudioPlayer from "./audioPlayer";
+import AudioPlayer from "./AudioPlayer";
 
 function SwiperComponent() {
   const musics = [
