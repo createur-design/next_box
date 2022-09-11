@@ -3,7 +3,6 @@ import React, { useRef, useEffect } from "react";
 function AudioPlayer(music) {
   const useAudioPlayer = useRef();
   useEffect(() => {
-    console.log("useAudio");
     if (music.title !== undefined) {
       LaunchMusic();
     }

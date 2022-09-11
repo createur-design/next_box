@@ -15,7 +15,6 @@ function SwiperComponent() {
     setAllMusics(musics);
   };
   useEffect(() => {
-    console.log("useSwiper");
     fetchMusics();
   }, []);
 
