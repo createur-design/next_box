@@ -1,14 +1,14 @@
 import React, { useRef, useEffect } from "react";
 
-function audioPlayer(sound) {
+function AudioPlayer(sound) {
   const AudioPlayer = useRef();
   useEffect(() => {
     if (sound.title !== undefined) {
-      launchMusic();
+      LaunchMusic();
     }
   }, [sound]);
   console.log("title of sound:", sound.title);
-  const launchMusic = () => {
+  const LaunchMusic = () => {
     AudioPlayer.current.play();
   };
   return (
@@ -26,4 +26,4 @@ function audioPlayer(sound) {
   );
 }
 
-export default audioPlayer;
+export default AudioPlayer;
