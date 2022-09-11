@@ -15,8 +15,9 @@ function SwiperComponent() {
     setAllMusics(musics);
   };
   useEffect(() => {
+    console.log("useSwiper");
     fetchMusics();
-  });
+  }, []);
 
   const handleClick = async (e) => {
     const index = Number(e.currentTarget.dataset.id);
