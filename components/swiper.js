@@ -1,9 +1,9 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
-import "swiper/css";
 import "swiper/css/bundle";
+import AudioPlayer from "./audioPlayer";
 
 function SwiperComponent() {
   const musics = [
@@ -39,57 +39,51 @@ function SwiperComponent() {
     },
   ];
 
-  const [sound, setSound] = useState();
+  const [soundTitle, setSoundTitle] = useState();
   const [isPlaying, setIsPlaying] = useState(true);
-
-  const audioPlayer = useRef();
 
   const handleClick = async (e) => {
     if (isPlaying) {
       const index = Number(e.currentTarget.dataset.id);
-      await setSound(musics[index - 1].src);
-      audioPlayer.current.play();
+      await setSoundTitle(musics[index - 1].src);
     }
   };
 
   return (
     <>
-      <Swiper
-        slidesPerView={2}
-        spaceBetween={10}
-        //   autoplay={
-        //     (true,
-        //     {
-        //       delay: 6000,
-        //     })
-        //   }
-        centeredSlides={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Autoplay, Pagination]}
-        className="mySwiperSlide"
-      >
-        {musics.map((music) => (
-          <SwiperSlide data-id={music.id} key={music.id} onClick={handleClick}>
-            <Image
-              //   src="http://placeimg.com/640/640/any"
-              src={music.img}
-              alt={music.title}
-              layout="fill"
-            />
-            <div className="title">
-              <h2>{music.title}</h2>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <audio
-        ref={audioPlayer}
-        preload="metadata"
-        controls
-        src={`/assets/music/${sound}`}
-      ></audio>
+      <div className="grid-x align-right">
+        <div className="cell small-12 medium-10">
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={10}
+            centeredSlides={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Autoplay, Pagination]}
+            className="mySwiperSlide"
+          >
+            {musics.map((music) => (
+              <SwiperSlide
+                data-id={music.id}
+                key={music.id}
+                onClick={handleClick}
+              >
+                <Image
+                  //   src="http://placeimg.com/640/640/any"
+                  src={music.img}
+                  alt={music.title}
+                  layout="fill"
+                />
+                <div className="title">
+                  <h2>{music.title}</h2>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+      <AudioPlayer title={soundTitle} />
     </>
   );
 }

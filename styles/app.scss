@@ -32,3 +32,6 @@ a {
 audio {
   width: 100%;
 }
+audio::-webkit-media-controls-timeline-container {
+  background-color: pink;
+}
