@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
 function AudioPlayer(sound) {
-  const AudioPlayer = useRef();
+  const AudioPlayer = React.createRef();
   useEffect(() => {
     if (sound.title !== undefined) {
       LaunchMusic();
