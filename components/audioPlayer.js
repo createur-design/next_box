@@ -11,7 +11,7 @@ function AudioPlayer(music) {
     useAudioPlayer.current.play();
   };
   return (
-    <div className="grid-container">
+    <div>
       <audio
         ref={useAudioPlayer}
         preload="metadata"

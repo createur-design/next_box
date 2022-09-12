@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import SwiperComponent from "../components/swiper";
+import SwiperAudio from "../components/swiper";
 
 export default function Home() {
   const user = {
@@ -16,15 +16,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container">
-        {/* <header>Navigation in progress...</header> */}
+        <header>
+          <h1 className="h4">
+            🎵 Welcome {user.name}
+            <br></br>to the <b className="txtBlue">Next_Box</b>
+          </h1>
+        </header>
         <main>
-          <div className="grid-container">
-            <h1 className="h4">
-              🎵 Welcome {user.name}
-              <br></br>to the <b className="txtBlue">Next_Box</b>
-            </h1>
-          </div>
-          <SwiperComponent />
+          <SwiperAudio />
         </main>
 
         <footer>
