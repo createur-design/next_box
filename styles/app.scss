@@ -4,10 +4,15 @@
 
 html,
 body {
+  min-height: 100vh;
+  height: -webkit-fill-available;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+#id__next {
+  height: 100%;
 }
 .container {
   display: flex;
@@ -34,4 +39,11 @@ audio {
 }
 audio::-webkit-media-controls-timeline-container {
   background-color: pink;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* The hack for Safari */
+    min-height: -webkit-fill-available;
+  }
 }
