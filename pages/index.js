@@ -5,7 +5,7 @@ import SwiperAudio from "../components/swiper";
 
 export default function Home() {
   const user = {
-    name: "Anonymous",
+    name: "Christophe",
   };
 
   return (
@@ -45,6 +45,7 @@ export default function Home() {
               & explore by Christophe <b>DELOBEL</b>
             </a>
           </div>
+          <Link href="/about">About</Link>
         </footer>
       </div>
     </>

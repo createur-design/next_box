@@ -1,4 +1,4 @@
-export const musics = [
+const musics = [
   {
     id: 1,
     title: "Stranger Things",
@@ -42,3 +42,5 @@ export const musics = [
   //     img: "http://placeimg.com/640/640/nature/grayscale/any",
   //   },
 ];
+
+export default musics;

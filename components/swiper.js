@@ -22,8 +22,8 @@ function SwiperComponent() {
 
   const handleClick = async (e) => {
     const index = Number(e.currentTarget.dataset.id);
-    await setMusic(allMusics[index - 1].src);
-    await setInfoMusic(allMusics[index - 1]);
+    await setMusic(allMusics[index].src);
+    await setInfoMusic(allMusics[index]);
   };
 
   return (
@@ -38,8 +38,8 @@ function SwiperComponent() {
         modules={[Autoplay, Pagination]}
         className="mySwiperSlide"
       >
-        {allMusics.map((music) => (
-          <SwiperSlide key={music.id}>
+        {allMusics.map((music, index) => (
+          <SwiperSlide key={index}>
             <Image
               //   src="http://placeimg.com/640/640/any"
               src={music.img}
@@ -47,7 +47,7 @@ function SwiperComponent() {
               layout="fill"
             />
             <div className="title">
-              <h2 className="h3" data-id={music.id} onClick={handleClick}>
+              <h2 className="h3" data-id={index} onClick={handleClick}>
                 {music.title}
               </h2>
             </div>

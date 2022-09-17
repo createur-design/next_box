@@ -1,4 +1,4 @@
-function About() {
+export default function About() {
   return (
     <div className="grid-container">
       <div className="grid-x align-stretch vh">
@@ -10,5 +10,3 @@ function About() {
     </div>
   );
 }
-
-export default About;
