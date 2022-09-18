@@ -6,12 +6,12 @@
   border-radius: 50%;
   // background-color: pink;
   overflow: hidden;
-  animation: turn 5s infinite linear;
+  transform: rotate(45deg);
 }
 
 @keyframes turn {
   100% {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
@@ -26,4 +26,5 @@
   height: 50%;
   background-color: pink;
   z-index: 1;
+  animation: turn 5s infinite linear;
 }
