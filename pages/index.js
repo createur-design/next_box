@@ -2,8 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import SwiperAudio from "../components/swiper";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession();
   const user = {
     name: "Christophe",
   };
@@ -18,9 +20,18 @@ export default function Home() {
       <div className="container">
         <header>
           <h1 className="h4">
-            🎵 Welcome {user.name}
+            🎵 Welcome {session && <>{session.user.name}</>}
             <br></br>to the <b className="txtBlue">Next_Box</b>
           </h1>
+          {session ? (
+            <>
+              <button onClick={() => signOut()}>Sign out</button>
+            </>
+          ) : (
+            <>
+              <button onClick={() => signIn()}>Sign in</button>
+            </>
+          )}
         </header>
         <main>
           <SwiperAudio />
